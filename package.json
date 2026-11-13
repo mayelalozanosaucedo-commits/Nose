@@ -1,0 +1,8 @@
+{
+  "name": "cuboverso-alpha-online",
+  "version": "1.1.0",
+  "private": true,
+  "description": "Servidor multijugador del juego original Cuboverso Alpha",
+  "engines": {"node": ">=18"},
+  "scripts": {"start": "node servidor.js"}
+}
