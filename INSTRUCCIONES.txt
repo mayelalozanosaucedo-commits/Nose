@@ -1,0 +1,14 @@
+CUBOVERSO ALPHA 1.2
+
+INDIVIDUAL: abre index.html en Chrome (internet necesario para los recursos 3D).
+MULTIJUGADOR: en tu sitio Railway, cuando hayas desplegado los nuevos archivos,
+crea una sala y comparte el codigo.
+
+PUBLICACION: reemplaza los archivos del repositorio conectado a Railway.
+Haz una copia de seguridad antes de cambiar el servidor. Conserva el volumen
+(DATA_DIR=/data). Comprueba /health y que el menu indique Alpha 1.2.
+
+NUEVO: cubitos flotantes y recogida, ovejas y lana, cama/respawn, sol y luna,
+antorchas, cofres, camara F5, crafteo 2x2 y 3x3, horno y controles moviles.
+
+Consulta README.md para mas detalles.
