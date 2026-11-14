@@ -1,0 +1,4 @@
+node_modules/
+mundos_servidor.json
+*.tmp
+.env

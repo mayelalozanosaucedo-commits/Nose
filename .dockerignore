@@ -1,0 +1,5 @@
+node_modules
+*.zip
+mundos_servidor.json
+*.tmp
+.git

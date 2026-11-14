@@ -1,0 +1,12 @@
+{
+  "name": "cuboverso-alpha-online",
+  "version": "1.4.0",
+  "private": true,
+  "description": "Cuboverso Alpha 1.4: portal arcade, generación de mundos, supervivencia y salas multijugador",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node servidor.js"
+  }
+}

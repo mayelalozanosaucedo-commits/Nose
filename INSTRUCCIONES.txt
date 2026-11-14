@@ -1,0 +1,24 @@
+CUBOVERSO ARCADE - ALPHA 1.4
+
+ARCHIVOS:
+- portal.html: pagina principal con biblioteca de juegos
+- index.html: Cuboverso Alpha 1.4
+- universo.html: Universo Sandbox
+- servidor.js: servidor multijugador y web
+
+PARA INICIAR LOCAL:
+1. Instala Node.js 18+.
+2. En una consola dentro de esta carpeta ejecuta npm start.
+3. Abre http://localhost:3000/ para ver todos los juegos.
+
+PARA ACTUALIZAR TU WEB RAILWAY:
+1. Guarda una copia del volumen de mundos.
+2. Sube TODOS los archivos de este ZIP a tu repositorio de Railway.
+3. Deja que Railway lo despliegue con el Dockerfile de este ZIP.
+4. Conserva el volumen persistente /data con DATA_DIR=/data.
+5. Comprueba /health, que debe devolver version 1.4.0.
+6. La portada sera la biblioteca y Cuboverso estara en /cuboverso.
+
+NO se ha desplegado automaticamente en tu cuenta de Railway.
+
+Consulta README.md para novedades, seguridad, controles y limitaciones.
