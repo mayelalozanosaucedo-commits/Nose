@@ -1,0 +1,12 @@
+{
+  "name": "cuboverso-alpha-online",
+  "version": "1.5.0",
+  "private": true,
+  "description": "Cuboverso Alpha 1.5 — juego 3D, animaciones, salas favoritas y preservación de mundos",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "start": "node servidor.js"
+  }
+}

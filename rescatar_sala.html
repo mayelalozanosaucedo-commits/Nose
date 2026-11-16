@@ -1,0 +1,29 @@
+<!doctype html><html lang="es"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Respaldo de salas Cuboverso</title><style>body{font:16px system-ui;background:#151b22;color:#e9f0ed;max-width:660px;margin:30px auto;padding:0 16px}h1{font-size:26px}label{display:block;margin:14px 0 4px}input,button{font:inherit;width:100%;padding:12px;border-radius:8px;border:1px solid #50677a;background:#253241;color:white;box-sizing:border-box}button{background:#32805d;cursor:pointer;margin:16px 0}.note{background:#29323a;border-left:4px solid #ebb973;padding:12px}#status{white-space:pre-wrap;background:#111b26;padding:12px;border-radius:8px;min-height:36px}small{color:#c4ccd2}</style></head><body>
+<h1>🛟 Rescatar mi sala de Cuboverso</h1>
+<p class="note">**Antes de actualizar Railway**, guarda una copia del mundo mientras la sala todavía existe. Este archivo no modifica ni borra el servidor. Necesitas estar autorizado para entrar a esa sala. No compartas el respaldo ni la contraseña públicamente.</p>
+<label for="server">Servidor actual</label><input id="server" value="https://nose-production-de5ef24b.up.railway.app/">
+<label for="code">Código de sala</label><input id="code" maxlength="8" placeholder="Código de 6 a 8 caracteres">
+<label for="player">Nombre con el que vas a entrar (elige uno que no esté conectado)</label><input id="player" value="Respaldo" maxlength="18">
+<label for="password">Contraseña del servidor, si existe (no se guarda)</label><input id="password" type="password" autocomplete="off">
+<button id="download">Conectar y descargar respaldo JSON</button>
+<div id="status">Listo para guardar.</div><p><small>Este respaldo recoge el terreno, cofres, hornos, objetos caídos, estado del día y tu inventario si el servidor reconoce tu perfil. Otros jugadores deben guardar sus inventarios por separado.</small></p>
+<script>
+const $=id=>document.getElementById(id);let socket=null;
+$('download').onclick=()=>{
+ $('status').textContent='Conectando, sin modificar el mundo…';
+ let url=$('server').value.trim();url=url.replace(/^https:/,'wss:').replace(/^http:/,'ws:').replace(/\/$/,'')+'/';
+ const code=$('code').value.trim().toUpperCase().replace(/[^A-Z0-9]/g,'');if(!/^[A-Z0-9]{6,8}$/.test(code)){$('status').textContent='Introduce el código válido de tu sala.';return;}
+ const name=$('player').value.trim()||'Respaldo';const key=$('password').value;
+ try{if(socket)socket.close();socket=new WebSocket(url);}catch(e){$('status').textContent='Dirección inválida: '+e.message;return;}
+ let done=false;
+ socket.onopen=()=>socket.send(JSON.stringify({type:'join',name,code,accessKey:key}));
+ socket.onmessage=e=>{let m;try{m=JSON.parse(e.data);}catch{return;}
+ if(m.type==='error'){$('status').textContent='Servidor: '+m.message;socket.close();return;}
+ if(m.type==='welcome'&&!done){done=true;const data={format:'cuboverso_room_backup_v1',code:m.room,seedText:m.seedText,mode:m.mode,worldName:m.worldName,genVersion:m.genVersion,changes:m.changes||[],furnaces:m.furnaces||{},chests:m.chests||{},meta:m.meta||{},drops:Object.fromEntries((m.drops||[]).map(d=>[d.id,d])),clock:m.clock,daysPassed:m.daysPassed,player:m.player||null,playerName:name,backedUpAt:new Date().toISOString()};
+ const blob=new Blob([JSON.stringify(data,null,2)],{type:'application/json'});const link=document.createElement('a');link.href=URL.createObjectURL(blob);link.download='respaldo_cuboverso_'+code+'_'+new Date().toISOString().slice(0,10)+'.json';document.body.append(link);link.click();link.remove();setTimeout(()=>URL.revokeObjectURL(link.href),2000);
+ $('status').textContent='Respaldo creado: '+code+' · '+data.changes.length+' bloques modificados. Guarda el archivo JSON en un lugar seguro antes de actualizar.';socket.close();}
+ };
+ socket.onerror=()=>{$('status').textContent='No se pudo conectar. Revisa la URL y que el servidor siga activo.';};
+ socket.onclose=()=>{if(!done&&$('status').textContent.startsWith('Conectando'))$('status').textContent='La conexión terminó antes de recibir los datos de la sala.';};
+};
+</script></body></html>

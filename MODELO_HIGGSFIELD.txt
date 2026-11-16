@@ -1,0 +1,6 @@
+Modelo generado con Higgsfield (Tripo 3D): zombi de estética de cubos.
+Trabajo terminado; recurso GLB disponible desde la URL de Higgsfield:
+https://d8j0ntlcm91z4.cloudfront.net/user_3M28W1NoiK0GL0DzJ3buRwik4P7/hf_20261116_052311_478aef9a-9b89-46ea-a9aa-6276e49b15a6.glb
+
+No está integrado como personaje animado en el juego: el fichero GLB no se pudo descargar y adaptar desde este entorno. El motor usa en su lugar su modelo cúbico animado original.
+No se pudieron generar los otros modelos de Higgsfield porque la cuenta indicó que no tiene créditos disponibles.

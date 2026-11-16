@@ -1,0 +1,13 @@
+CUBOVERSO ALPHA 1.5
+
+¡¡NO ACTUALICES EL SERVIDOR SI TODAVÍA NO RESPALDASTE TU SALA!!
+
+1. Abre rescatar_sala.html con Chrome. Introduce URL de Railway y código de sala.
+2. Descarga el JSON de tu partida actual, guárdalo fuera de la web.
+3. Ahora sí: añade un volumen /data a Railway y configura DATA_DIR=/data.
+4. Configura ADMIN_IMPORT_KEY (larga y privada) para restaurar.
+5. Sube los archivos del ZIP a GitHub/Railway y despliega.
+6. Abre restaurar_sala.html, usa la clave y el JSON. La sala conservará su código.
+7. Entra al juego y añade el servidor/sala a favoritos.
+
+Lee README.md para la guía completa.
